@@ -13,7 +13,7 @@ labeledSecretFile="$tempDir/labeled-secret.yaml"
 
 mkdir -p $tempDir
 
-kubectl create secret generic capmox-manager-credentials \
+kubectl create secret generic $secretName \
   --from-env-file=$envFile \
   --dry-run=client \
   --output yaml > $secretFile
