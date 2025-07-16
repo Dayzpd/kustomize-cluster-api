@@ -2,3 +2,21 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
 - infrastructure.yaml
+patches:
+- patch: |-
+    - op: remove
+      path: /spec/versions/0/schema/openAPIV3Schema/properties/spec/properties/network/properties/default/properties/mtu/x-kubernetes-validations/1
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    name: proxmoxmachines.infrastructure.cluster.x-k8s.io
+- patch: |-
+    - op: remove
+      path: /spec/versions/0/schema/openAPIV3Schema/properties/spec/properties/template/properties/spec/properties/network/properties/default/properties/mtu/x-kubernetes-validations/1
+  target:
+    group: apiextensions.k8s.io
+    version: v1
+    kind: CustomResourceDefinition
+    name: proxmoxmachinetemplates.infrastructure.cluster.x-k8s.io
+    
