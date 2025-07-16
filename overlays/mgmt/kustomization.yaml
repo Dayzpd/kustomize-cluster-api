@@ -7,7 +7,7 @@ configurations:
 resources:
 - ../../base
 - ../../components/core/v1.9.7
-- ../../components/capmox/v0.7.1
+- ../../components/capmox/v0.7.2
 - ../../components/in-cluster-ipam/v1.0.2
 - sealed-secrets.yaml
 

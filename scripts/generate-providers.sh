@@ -4,7 +4,7 @@ currentDir=$( pwd )
 namespace="cluster-api"
 
 coreVersion="v1.9.7"
-capmoxVersion="v0.7.1"
+capmoxVersion="v0.7.2"
 inClusterIPAMVersion="v1.0.2"
 
 function generateCoreProvider() {
