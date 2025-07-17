@@ -6,6 +6,7 @@ namespace="cluster-api"
 coreVersion="v1.9.7"
 capmoxVersion="v0.7.2"
 inClusterIPAMVersion="v1.0.2"
+helmAddonVersion="v0.3.2"
 
 function generateCoreProvider() {
 
@@ -80,10 +81,26 @@ function generateInClusterIPAMProvider() {
 
 }
 
-#clusterctl generate provider \
-#  --target-namespace $namespace \
-#  --addon helm | \
-#  yq -y 'select(.kind != "Namespace")' > capi/providers/helm-addons.yaml
+function generateHelmAddonProvider() {
+
+  helmDir="components/helm-addon/$helmAddonVersion"
+
+  mkdir -p $helmDir
+
+  clusterctl generate provider \
+    --target-namespace $namespace \
+    --addon helm:$helmAddonVersion | \
+    yq -y 'select(.kind != "Namespace")' > $helmDir/helm.yaml
+
+  cd $helmDir
+
+  rm -f kustomization.yaml
+
+  kustomize create --resources helm.yaml
+
+  cd $currentDir
+
+}
 
 function main() {
 
@@ -92,6 +109,8 @@ function main() {
   generateProxmoxInfraProvider
 
   generateInClusterIPAMProvider
+
+  generateHelmAddonProvider
 
 }
 
