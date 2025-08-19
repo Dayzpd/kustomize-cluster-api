@@ -1,0 +1,7 @@
+providers:
+- name: "caren"
+  url: "https://github.com/nutanix-cloud-native/cluster-api-runtime-extensions-nutanix/releases/v0.33.1/runtime-extensions-components.yaml"
+  type: "RuntimeExtensionProvider"
+CLUSTER_TOPOLOGY: "true"
+EXP_CLUSTER_RESOURCE_SET: "true"
+EXP_RUNTIME_SDK: "true"

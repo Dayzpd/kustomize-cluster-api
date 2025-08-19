@@ -10258,7 +10258,7 @@ spec:
             - --diagnostics-address=:8443
             - --insecure-diagnostics=false
             - --use-deprecated-infra-machine-naming=false
-            - --feature-gates=MachinePool=true,ClusterTopology=false,KubeadmBootstrapFormatIgnition=false
+            - --feature-gates=MachinePool=true,ClusterTopology=true,KubeadmBootstrapFormatIgnition=false
           command:
             - /manager
           env:
